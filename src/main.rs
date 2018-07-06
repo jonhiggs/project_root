@@ -66,8 +66,9 @@ fn main() {
         println!("path_arg is {:?}", &path_arg);
     }
 
-    let path_string = fs::canonicalize(path_arg).unwrap_or("/");
-    let path = PathBuf::from(path_string);
+    let path = fs::canonicalize(path_arg).unwrap_or(
+            PathBuf::from("/")
+        );
 
     if !path.exists() {
         println!("Invalid path {:?}", path);
